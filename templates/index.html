@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Air Temp Predictor</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div class="container">
+    <button class="btn btn-primary btn-block btn-large"><a href="/pandas_profiling">EDA Report</a></button>
+    <h1>Please enter the numbers</h1>
+    <form action="/predict" method="POST">
+        <label for="Type">Select Type</label>
+        <select name="Type" id='Type' placeholder="Type" required="required" >
+            <option value="M">M</option>
+            <option value="H">H</option>
+            <option value="L">L</option>
+        </select>
+        <br>
+        <br>
+        <label for="Process Temp">Enter Process Temperature</label>
+        <input type="number" name="Process Temp" id='Process Temp' placeholder="Process Temperature [k]" value="305.0" min="305.0" max="314.0" onchange="temp()" required="required" />
+        <br>
+        <br>
+        <label for="RPM">Enter RPM</label>
+        <input type="number" name="RPM" id='RPM' placeholder="RPM [rpm]" value="1150" min="1150" max="2900" onchange="rpm()" required="required" />
+        <br>
+        <br>
+        <label for="Torque">Enter Torque</label>
+        <input type="number" name="Torque" id='Torque' placeholder="Torque [Nm]" value="3" min="3" max="77" onchange="torque()" required="required" />
+        <br>
+        <br>
+        <label for="wear">Enter Tool Wear</label>
+        <input type="number" name="wear" id='wear' placeholder="Tool wear [min]" value="0" min="0" max="254" onchange="wear()" required="required" />
+        <br>
+        <br>
+        <label for="Failure">Machine Failure</label>
+        <select name="Failure" id='Failure' placeholder="Type" required="required" >
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br>
+        <br>
+        <label for="TWF">Select TWF</label>
+        <select name="TWF" id='TWF' placeholder="Type" required="required" >
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br>
+        <br>
+        <label for="HDF">Select HDF</label>
+        <select name="HDF" id='HDF' placeholder="Type" required="required" >
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br>
+        <br>
+        <label for="PWF">Select PWF</label>
+        <select name="PWF" id='PWF' placeholder="Type" required="required" >
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br>
+        <br>
+        <label for="OSF">Select OSF</label>
+        <select name="OSF" id='OSF' placeholder="Type" required="required" >
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br>
+        <br>
+        <label for="RNF">Select RNF</label>
+        <select name="RNF" id='RNF' placeholder="Type" required="required" >
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Air Temperature Predictor</button>
+    </form>
+</div>
+<script>
+    function temp(){
+        if(document.getElementById("Process Temp").value == 314){
+            document.getElementById("Process Temp").value = 305.0;
+        }
+        if(document.getElementById("Process Temp").value == 305){
+            document.getElementById("Process Temp").value = 314;
+        }
+    }
+    document.getElementById('Process Temp').addEventListener('keypress', function(event) {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+        }
+    });
+    function rpm(){
+        if(document.getElementById("RPM").value == 2900){
+            document.getElementById("RPM").value = 1150;
+        }
+        if(document.getElementById("RPM").value == 1150){
+            document.getElementById("RPM").value = 2900;
+        }
+    }
+    document.getElementById('RPM').addEventListener('keypress', function(event) {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+        }
+    });
+    function torque(){
+        if(document.getElementById("Torque").value == 77){
+            document.getElementById("Torque").value = 3;
+        }
+        if(document.getElementById("Torque").value == 3){
+            document.getElementById("Torque").value = 77;
+        }
+    }
+    document.getElementById('Torque').addEventListener('keypress', function(event) {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+        }
+    });
+    function wear(){
+        if(document.getElementById("wear").value == 254){
+            document.getElementById("wear").value = 0;
+        }
+        if(document.getElementById("wear").value == 0){
+            document.getElementById("wear").value = 254;
+        }
+    }
+    document.getElementById('wear').addEventListener('keypress', function(event) {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+        }
+    });
+</script>>
+</body>
+</html>
